@@ -108,7 +108,7 @@ services:
       - "10054:10004"
       - "10055:10005"
     image: corda/node:3.3
-    container_name: Portal4Bank
+    container_name: p4b
     volumes:
       - ./nodes/portal4bank_node/node.conf:/opt/corda/node.conf
       - ./nodes/cordapps/:/opt/corda/cordapps/
@@ -131,7 +131,7 @@ services:
       - "10064:10004"
       - "10065:10005"
     image: corda/node:3.3
-    container_name: Oracle
+    container_name: oracle
     volumes:
       - ./nodes/oracle_node/node.conf:/opt/corda/node.conf
       - ./nodes/cordapps/:/opt/corda/cordapps/
