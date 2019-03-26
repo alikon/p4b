@@ -1,0 +1,143 @@
+version: '3.3'
+services:
+
+  Notary:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10002:10002"
+      - "10003:10003"
+      - "10004:10004"
+      - "10005:10005"
+    image: corda/node:3.3
+    container_name: notary
+    volumes:
+      - ./nodes/notary_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/notary_node/certificates/:/opt/corda/certificates/
+      - ./nodes/notary_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/notary_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+  CordaNodeBanca1:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10022:10002"
+      - "10023:10003"
+      - "10024:10004"
+      - "10025:10005"
+    image: corda/node:3.3
+    container_name: banca1
+    volumes:
+      - ./nodes/banca1_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/banca1_node/certificates/:/opt/corda/certificates/
+      - ./nodes/banca1_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/banca1_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+  CordaNodeBanca500:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10032:10002"
+      - "10033:10003"
+      - "10034:10004"
+      - "10035:10005"
+    image: corda/node:3.3
+    container_name: banca500
+    volumes:
+      - ./nodes/banca500_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/banca500_node/certificates/:/opt/corda/certificates/
+      - ./nodes/banca500_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/banca500_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+  CordaNodeBanca1000:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10042:10002"
+      - "10043:10003"
+      - "10044:10004"
+      - "10045:10005"
+    image: corda/node:3.3
+    container_name: banca1000
+    volumes:
+      - ./nodes/banca1000_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/banca1000_node/certificates/:/opt/corda/certificates/
+      - ./nodes/banca1000_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/banca1000_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+  CordaNodePortal4Bank:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10052:10002"
+      - "10053:10003"
+      - "10054:10004"
+      - "10055:10005"
+    image: corda/node:3.3
+    container_name: Portal4Bank
+    volumes:
+      - ./nodes/portal4bank_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/portal4bank_node/certificates/:/opt/corda/certificates/
+      - ./nodes/portal4bank_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/portal4bank_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+  CordaNodeOracle:
+    networks:
+      - corda
+    build:
+      context: .
+      args:
+        BUILDTIME_CORDA_VERSION: 3.3
+    env_file:
+      - ./corda_docker.env
+    ports:
+      - "10062:10002"
+      - "10063:10003"
+      - "10064:10004"
+      - "10065:10005"
+    image: corda/node:3.3
+    container_name: Oracle
+    volumes:
+      - ./nodes/oracle_node/node.conf:/opt/corda/node.conf
+      - ./nodes/cordapps/:/opt/corda/cordapps/
+      - ./nodes/oracle_node/certificates/:/opt/corda/certificates/
+      - ./nodes/oracle_node/network-parameters:/opt/corda/network-parameters
+      - ./nodes/oracle_node/additional-node-infos/:/opt/corda/additional-node-infos
+
+networks:
+  corda:
